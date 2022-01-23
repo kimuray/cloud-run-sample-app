@@ -20,6 +20,10 @@ RUN bundle install
 RUN apk del build-packages
 COPY . /myapp
 
+RUN if ["${RAILS_ENV}" = "production"] ; then \
+  bundle exec rails assets:precompile; \
+  fi
+
 COPY docker-entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
