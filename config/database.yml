@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
-  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  database: cloudrun-app-sample-production
+  username: system_user
+  password: <%= Rails.application.credentials.gcp[:db_passsword] %>
