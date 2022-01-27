@@ -52,4 +52,5 @@ production:
   <<: *default
   database: cloudrun-app-sample-production
   username: system_user
-  password: <%= Rails.application.credentials.gcp[:db_passsword] %>
+  password: <%= Rails.application.credentials.gcp[:db_password] %>
+  socket: "<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>"
